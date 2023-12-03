@@ -1,9 +1,11 @@
-import React from "react";
+import { JoinForm } from "./join-form";
 
 export default function page() {
   return (
-    <div>
-      <h1 className={`mb-3 text-2xl font-semibold`}>Create </h1>
+    <div className=" flex h-full min-h-[80vh] flex-col items-center justify-center gap-y-3">
+      <div className="w-10/12">
+        <JoinForm />
+      </div>
     </div>
   );
 }

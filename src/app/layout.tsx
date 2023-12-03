@@ -1,4 +1,6 @@
 import Navbar from "@/components/navbar";
+import Provider from "@/providers/provider";
+import "@rainbow-me/rainbowkit/styles.css";
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -16,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={GeistMono.className}>
-        <Navbar />
-        <div>{children}</div>
+        <Provider>
+          <Navbar />
+          <div className=" py-8">{children}</div>
+        </Provider>
       </body>
     </html>
   );
