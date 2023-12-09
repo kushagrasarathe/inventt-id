@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -13,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import JoinSchema from "@/schemas/join-schema";
+import { default as OnboardingSchema } from "@/schemas/onboarding";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderIcon } from "lucide-react";
 import * as React from "react";
@@ -21,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
-type FormData = z.infer<typeof JoinSchema>;
+type FormData = z.infer<typeof OnboardingSchema>;
 
 export function JoinForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -36,7 +35,7 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
   };
 
   const form = useForm<FormData>({
-    resolver: zodResolver(JoinSchema),
+    resolver: zodResolver(OnboardingSchema),
     defaultValues: defaultValues,
   });
 
@@ -44,6 +43,7 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
     setIsLoading(true);
 
     console.log(data);
+    // const res = await generateClaim();
 
     setTimeout(() => {
       setIsLoading(false);

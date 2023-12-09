@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={GeistMono.className}>
         <Provider>
           <Navbar />
-          <div className=" py-8">{children}</div>
+          <div className=" py-5">{children}</div>
         </Provider>
       </body>
     </html>

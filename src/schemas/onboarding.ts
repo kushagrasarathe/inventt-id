@@ -6,7 +6,7 @@ const minLenghtErrorMessage = (fieldName: string, length: number) =>
 const maxLenghtErrorMessage = (fieldName: string, length: number) =>
   `Field should be max ${length} characters long`;
 
-const JoinSchema = z.object({
+const OnboardingSchema = z.object({
   name: z
     .string()
     .min(3, { message: minLenghtErrorMessage("Name", 3) })
@@ -49,4 +49,4 @@ const JoinSchema = z.object({
     }),
 });
 
-export default JoinSchema;
+export default OnboardingSchema;

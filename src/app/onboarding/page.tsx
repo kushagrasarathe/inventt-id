@@ -1,4 +1,4 @@
-import { JoinForm } from "./join-form";
+import { JoinForm } from "./onboarding-form";
 
 export default function page() {
   return (
