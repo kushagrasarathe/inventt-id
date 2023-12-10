@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/toaster";
 import Provider from "@/providers/provider";
 import "@rainbow-me/rainbowkit/styles.css";
 import { GeistMono } from "geist/font/mono";
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Provider>
           <Navbar />
           <div className=" py-5">{children}</div>
+          <Toaster />
         </Provider>
       </body>
     </html>

@@ -1,16 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    return config;
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: `http://localhost:3001/:path*`,
+      },
+    ];
   },
 };
-
 module.exports = nextConfig;
