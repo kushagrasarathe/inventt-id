@@ -4,6 +4,7 @@
 
 @layer base {
   html {
-    @apply max-w-7xl px-6 bg-[#fbfbfb] mx-auto;
+    /* bg-[#fbfbfb] */
+    @apply max-w-7xl px-6 bg-violet-50 mx-auto;
   }
 }

@@ -1,4 +1,5 @@
 import controller from "@/assets/controller.png";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -9,11 +10,17 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-between gap-8 space-y-6 ">
       <div className="flex items-center justify-between gap-8 py-8 ">
-        <div className=" w-7/12 space-y-5">
+        <div className=" w-7/12 space-y-4">
+          <Badge
+            variant={"outline"}
+            className=" border-violet-500 px-3 text-sm text-violet-500 md:max-w-xl"
+          >
+            Lorem ipsum dolor sit amet
+          </Badge>
           <h1 className="text-4xl font-bold tracking-wide">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit
+            Lorem ipsum dolor, sit amet consectetur adipisicing
           </h1>
-          <p className=" text-lg">
+          <p className=" text-lg md:max-w-xl">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
             quo inventore deserunt
           </p>

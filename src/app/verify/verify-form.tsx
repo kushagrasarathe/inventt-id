@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { OnboardingSchema } from "@/schemas/onboarding";
+import { VerifySchema } from "@/schemas/onboarding";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderIcon } from "lucide-react";
 import * as React from "react";
@@ -20,14 +20,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
-type FormData = z.infer<typeof OnboardingSchema>;
+type FormData = z.infer<typeof VerifySchema>;
 
-export function JoinForm({ className, ...props }: UserAuthFormProps) {
+export function VerifyForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const defaultValues = {
-    name: "",
-    email: "",
     pin: "",
     favCar: "",
     bestPlace: "",
@@ -35,7 +33,7 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
   };
 
   const form = useForm<FormData>({
-    resolver: zodResolver(OnboardingSchema),
+    resolver: zodResolver(VerifySchema),
     defaultValues: defaultValues,
   });
 
@@ -43,7 +41,6 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
     setIsLoading(true);
 
     console.log(data);
-    // const res = await generateClaim();
 
     setTimeout(() => {
       setIsLoading(false);
@@ -57,65 +54,22 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
           <Card className="border-neutral-300 px-12 py-8">
             <div className="grid gap-8">
               <h1
-                className={`mb-3 text-center text-2xl font-semibold underline underline-offset-8`}
+                className={`text-center text-2xl font-semibold underline underline-offset-8`}
               >
-                Join InventtID
+                Verify
               </h1>
               <div className=" flex items-start justify-between gap-8">
                 <div className=" w-full space-y-3">
-                  <div className=" relative flex items-center justify-center pt-3">
-                    <Separator className=" w-3/12" />
+                  <div className=" relative flex items-center justify-center pb-2">
+                    <Separator className=" w-2/12" />
                     <div className=" relative flex w-8/12 justify-center text-center text-xs uppercase">
                       <span className="bg-background text-muted-foreground px-2">
-                        Fill your personal details
+                        Answer security questions to verify account owenrship
                       </span>
                     </div>
-                    <Separator className=" w-3/12" />
+                    <Separator className=" w-2/12" />
                   </div>
-                  <div className="grid gap-2">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Alice 👩🏻"
-                              id="name"
-                              type="text"
-                              disabled={isLoading}
-                              defaultValue={defaultValues?.name}
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="example@inventtid.com 📩"
-                              id="email"
-                              type="email"
-                              disabled={isLoading}
-                              defaultValue={defaultValues?.email}
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+
                   <div className="grid gap-2">
                     <FormField
                       control={form.control}
@@ -137,18 +91,6 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
                         </FormItem>
                       )}
                     />
-                  </div>
-                </div>
-                <Separator orientation="vertical" />
-                <div className=" w-full space-y-3">
-                  <div className=" relative flex items-center justify-center pt-3">
-                    <Separator className=" w-3/12" />
-                    <div className=" relative flex w-8/12 justify-center text-center text-xs uppercase">
-                      <span className="bg-background text-muted-foreground px-2">
-                        Answer security questions
-                      </span>
-                    </div>
-                    <Separator className=" w-3/12" />
                   </div>
                   <div className="grid gap-2">
                     <FormField
@@ -223,7 +165,7 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
                 {isLoading && (
                   <LoaderIcon className="mr-2 h-4 w-4 animate-spin" />
                 )}
-                Create Smart Account
+                Verify Ownership
               </Button>
             </div>
           </Card>
