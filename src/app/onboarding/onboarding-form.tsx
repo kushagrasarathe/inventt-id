@@ -55,7 +55,6 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
-    console.log(data);
 
     const polygonIdData = await generatePolygonID();
     if (polygonIdData === null) {
@@ -68,7 +67,7 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
       data.favCar,
       data.bestPlace,
       data.favGame,
-      polygonIdData.id,
+      polygonIdData.identifier,
     );
 
     if (claimData === null) {
@@ -96,6 +95,35 @@ export function JoinForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div className={cn("grid gap-6 ", className)} {...props}>
+      {/* <div className=" flex w-full flex-col items-center justify-center">
+        <Card className="border-neutral-300 px-12 py-8">
+          <h1
+            className={`mb-5 text-center text-2xl font-semibold underline underline-offset-8`}
+          >
+            Scan QR To Claim
+          </h1>
+          <QRCode
+            value={JSON.stringify({
+              body: {
+                credentials: [
+                  {
+                    description:
+                      "urn:uuid:66df0c17-d7f7-49c4-acc4-abd1ea681df5",
+                    id: "e82dc206-975e-11ee-8386-0242ac120009",
+                  },
+                ],
+                url: "http://localhost:3001/v1/agent",
+              },
+              from: "did:polygonid:polygon:mumbai:2qFYKZkpW2MRXcve4j82sc6eyewAa3ptLZyfyCsU6Z",
+              id: "fb6f092f-e139-4c95-9daa-74a9c946c102",
+              thid: "fb6f092f-e139-4c95-9daa-74a9c946c102",
+              to: "did:polygonid:polygon:mumbai:2qHKrJvjrrQH8JcQ4UmfT1CVsrCUwYPfMruNL1SgaH",
+              typ: "application/iden3comm-plain-json",
+              type: "https://iden3-communication.io/credentials/1.0/offer",
+            })}
+          />
+        </Card>
+      </div> */}
       {qrData ? (
         <div className=" flex w-full flex-col items-center justify-center">
           <Card className="border-neutral-300 px-12 py-8">
